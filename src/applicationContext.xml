@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--配置目标对象-->
+    <bean id="usersService" class="com.bjsxt.service.impl.UsersServiceImpl"/>
+
+    <!--配置切面对象-->
+    <bean id="myAspect" class="com.bjsxt.aop.MyAspect"/>
+    <bean id="myAspect2" class="com.bjsxt.aop.MyAspect2"/>
+
+    <!--配置切面-->
+    <!--作用：在AspectJ框架中开启注解处理。声明自动为IOC容器的那些配置了@AspectJ的切面的bean对象创建代理,织入切面-->
+    <!--proxy-target-class默认是false,false：使用JDK的Proxy对象创建代理对象;true：使用CGLIB创建代理对象。-->
+    <!--如果目标对象没有实现接口则自动使用CGLIB创建代理对象-->
+    <aop:aspectj-autoproxy proxy-target-class="false"/>
+</beans>
